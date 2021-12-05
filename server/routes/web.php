@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,19 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+ 
+Route::get('/orders', 'App\Http\Controllers\OrderController@index');
 
-Route::get('/orders', function () {
-
-
-    // moack data
-$pizzas = [
-    ['type' => 'Meaty Pizza', 'panType' => 'Thick', 'price' => 12],
-    ['type' => 'MushRoom Pizza', 'panType' => 'Thin', 'price' => 5],
-    ['type' => 'Hawaii Pizza', 'panType' => 'Thin', 'price' => 9],
-    ['type' => 'Veggey Pizza', 'panType' => 'Thick', 'price' => 35],
-    ['type' => 'Vegan Pizza', 'panType' => 'Thick', 'price' => 134],
-    ['type' => 'Beef Pizza', 'panType' => 'Thick', 'price' => 3]
-];
-    return view('orders', ['pizzas' => $pizzas ]);
-});
+Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show');
 ?>
